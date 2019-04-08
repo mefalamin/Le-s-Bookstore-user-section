@@ -1,7 +1,17 @@
  
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+
+}
+
+hr{
+  border: none;
+  height: 1px;
+  color: #333;
+  background-color: #333;
+}
+
+.container{
+  width: 90%;
 }
 
 .navbar {
