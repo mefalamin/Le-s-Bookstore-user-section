@@ -36,8 +36,22 @@ hr{
 
 .home-headline span{
   background-color: #231F20;
-  padding: 5px 20px;
+  padding: 5px 22px;
 }
 
+.section-headline{
+  font-family: 'Times New Roman',Times,Serif;
+  font-size: 24px;
+  color: #fff;
+  margin: auto;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.section-headline span{
+  background-color: #231F20;
+  padding: 5px 22px;
+
+}
 
 
