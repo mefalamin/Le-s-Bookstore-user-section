@@ -9,6 +9,9 @@ hr{
   color: #333;
   background-color: #333;
 }
+.page-top{
+  margin-top: -70px;
+}
 
 .container{
   width: 90%;
@@ -21,3 +24,19 @@ hr{
 .box{
   border: 1px solid red;
 }
+.home-headline{
+  font-family: 'Times New Roman',Times,Serif;
+  font-size: 24px;
+  color: #fff;
+  margin: auto;
+  text-align: center;
+  margin-top: -13px;
+}
+
+.home-headline span{
+  background-color: #231F20;
+  padding: 5px 20px;
+}
+
+
+
