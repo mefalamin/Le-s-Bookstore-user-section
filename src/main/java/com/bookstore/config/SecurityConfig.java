@@ -38,7 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/js/**",
             "/images/**",
             "/",
-            "/myAccount"
+            "/newUser",
+            "/forgetPassword"
+
     };
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{

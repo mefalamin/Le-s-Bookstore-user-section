@@ -28,6 +28,9 @@ public class UserRole {
         this.role = role;
     }
 
+    public UserRole() {
+    }
+
     public Long getUserRoleId() {
         return userRoleId;
     }
