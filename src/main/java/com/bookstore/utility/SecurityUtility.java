@@ -21,6 +21,7 @@ public class SecurityUtility {
 
     }
 
+    @Bean
     public static String randomPassword(){
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder salt = new StringBuilder();

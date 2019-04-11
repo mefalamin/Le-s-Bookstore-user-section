@@ -30,15 +30,15 @@
         <div class="col-xs-9 col-xs-offset-3">
             <ul class="nav nav-tabs">
                 <!--nav tabs-->
-                <li><a href="#tab-1" data-toggle="tab"><span style="color: red">Create new account</span></a> </li>
-                <li><a href="#tab-2" data-toggle="tab"><span  style="color: red">Log in</span></a></li>
-                <li><a href="#tab-3" data-toggle="tab"><span  style="color: red">Forgot Password?</span></a></li>
+                <li th:classappend="${classActiveNewAccount}? 'in active' " ><a href="#tab-1" data-toggle="tab"><span style="color: red">Create new account</span></a> </li>
+                <li th:classappend="${classActiveLogin}? 'in active' " ><a href="#tab-2" data-toggle="tab"><span  style="color: red">Log in</span></a></li>
+                <li th:classappend="${classActiveForgetPassword}? 'in active' " ><a href="#tab-3" data-toggle="tab"><span  style="color: red">Forgot Password?</span></a></li>
             </ul>
             <!--tab panels-->
             <div class="tab-content">
 
                 <!--create a new user-->
-                <div class="tab-pane fade" id="tab-1">
+                <div class="tab-pane fade"  id="tab-1" th:classappend="${classActiveNewAccount}? 'in active' " >
                     <div class="panel-group">
                         <div class="panel panel-default" style="border: none">
                             <div class="panel-body" style="background-color: #ededed;margin-top: 20px">
@@ -65,7 +65,8 @@
                     </div>
                 </div>
                 <!--login-->
-                <div class="tab-pane fade" id="tab-2">
+
+                <div class="tab-pane fade" id="tab-2" th:classappend="${classActiveLogin}? 'in active' " >
                     <div class="panel-group">
                         <div class="panel panel-default" style="border: none">
                             <div class="panel-body" style="background-color: #ededed;margin-top: 20px">
@@ -88,7 +89,7 @@
                     </div>
                 </div>
                 <!--forget password-->
-                <div class="tab-pane fade" id="tab-3">
+                <div class="tab-pane fade" id="tab-3"  th:classappend="${classActiveForgetPassword}? 'in active' " >
                     <div class="panel-group">
                         <div class="panel panel-default" style="border: none">
                             <div class="panel-body" style="background-color: #ededed;margin-top: 20px">
