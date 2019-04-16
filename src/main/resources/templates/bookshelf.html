@@ -63,7 +63,7 @@
                                     <span style="text-decoration: line-through">$<span th:text="${#numbers.formatDecimal(book.listPrice,0,'COMMA',2,'POINT')}"></span>
                                     </span>
                                     <br/>
-                                    <p th:text="${#strings.abbreviate(book.description,500)}"></p>
+                                    <p th:utext="${#strings.abbreviate(book.description,800)}"> </p>
 
 
                                 </div>
@@ -85,6 +85,15 @@
 
 
 <div th:replace="common/header :: body-bottom-scripts"></div>
+<script>
+    $(document).ready(function () {
+        $('#bookList').DataTable({
+            "lengthMenu": [[5,10,15,20,-1],[5,10,15,20,"All"]],
+            "ordering": false,
+            stateSave:true
+        });
 
+    });
+</script>
 </body>
 </html>
