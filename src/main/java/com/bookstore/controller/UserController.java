@@ -7,9 +7,9 @@ import com.bookstore.domain.UserShipping;
 import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
-import com.bookstore.service.BookService;
 import com.bookstore.service.UserService;
 import com.bookstore.service.impl.UserSecurityService;
+import com.bookstore.utility.CountryList;
 import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.SecurityUtility;
 import com.bookstore.utility.USConstants;
@@ -51,7 +51,6 @@ public class UserController {
 
     @RequestMapping("/newUser")
     public String newUser(
-            Locale locale,
             @RequestParam("token") String token,
             Model model){
         PasswordResetToken passwordResetToken = userService.getPasswordResetToken(token);
@@ -177,15 +176,11 @@ public class UserController {
         model.addAttribute("userShippingList",user.getUserShippingList());
         /*model.addAttribute("orderList",user.getOrderList());*/
 
-        UserShipping userShipping = new UserShipping();
-        model.addAttribute("userShipping",userShipping);
+      /*  UserShipping userShipping = new UserShipping();
+        model.addAttribute("userShipping",userShipping);*/
 
         model.addAttribute("listOfCreditCards",true);
         model.addAttribute("listOfShippingAddress",true);
-
-        List<String> stateList = USConstants.listOfUSStatesCode;
-        Collections.sort(stateList);
-        model.addAttribute("stateList",stateList);
         model.addAttribute("classActiveEdit",true);
 
         return "myProfile";
@@ -212,23 +207,24 @@ public class UserController {
     ){
         User user = userService.findByUsername(principal.getName());
         model.addAttribute("user", user);
-
+        //for showing the form
         model.addAttribute("addNewCreditCard", true);
+        //for tab pane active
         model.addAttribute("classActiveBilling", true);
+
+        //shipping tab data load
         model.addAttribute("listOfShippingAddresses", true);
 
 
         UserBilling userBilling = new UserBilling();
         UserPayment userPayment = new UserPayment();
 
-
+        //for getting the model of billing address and payment card details
         model.addAttribute("userBilling", userBilling);
         model.addAttribute("userPayment", userPayment);
 
-        List<String> stateList = USConstants.listOfUSStatesCode;
-        Collections.sort(stateList);
-        System.out.println(stateList);
-        model.addAttribute("stateList", stateList);
+
+        model.addAttribute("countryList", CountryList.getCountryList());
         model.addAttribute("userPaymentList", user.getUserPaymentList());
         model.addAttribute("userShippingList", user.getUserShippingList());
 		/*model.addAttribute("orderList", user.orderList());*/
@@ -248,15 +244,33 @@ public class UserController {
         model.addAttribute("listOfCreditCards", true);
 
         UserShipping userShipping = new UserShipping();
-
+        //for getting the model
         model.addAttribute("userShipping", userShipping);
 
-        List<String> stateList = USConstants.listOfUSStatesCode;
-        Collections.sort(stateList);
-        model.addAttribute("stateList", stateList);
+
+        model.addAttribute("countryList", CountryList.getCountryList());
         model.addAttribute("userPaymentList", user.getUserPaymentList());
         model.addAttribute("userShippingList", user.getUserShippingList());
 		/*model.addAttribute("orderList", user.orderList());*/
+
+        return "myProfile";
+    }
+
+    @RequestMapping(value = "/addNewCreditCard" ,method = RequestMethod.POST)
+    public String addNewCreditCard(
+            @ModelAttribute("userPayment") UserPayment userPayment,
+            @ModelAttribute("userBilling") UserBilling userBilling,
+            Model model, Principal principal
+    ){
+            User user = userService.findByUsername(principal.getName());
+            userService.updateUserBilling(userBilling,userPayment,user);
+
+            model.addAttribute("user",user);
+            model.addAttribute("userPaymentList",user.getUserPaymentList());
+            model.addAttribute("userShippingList",user.getUserShippingList());
+            model.addAttribute("listOfCreditCards",true);
+            model.addAttribute("classActiveBilling",true);
+            model.addAttribute("ListOfShippingAddress",true);
 
         return "myProfile";
     }

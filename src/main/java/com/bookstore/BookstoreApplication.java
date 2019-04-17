@@ -1,8 +1,10 @@
 package com.bookstore;
 
+import com.bookstore.domain.Book;
 import com.bookstore.domain.User;
 import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
+import com.bookstore.service.BookService;
 import com.bookstore.service.UserService;
 import com.bookstore.utility.SecurityUtility;
 import org.springframework.boot.CommandLineRunner;
@@ -40,5 +42,8 @@ public class BookstoreApplication implements CommandLineRunner {
 		userRoles.add(new UserRole(user1,role1));
 
 		userService.createUser(user1,userRoles);
+
+
+
 	}
 }
