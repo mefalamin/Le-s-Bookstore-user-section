@@ -183,7 +183,7 @@ public class UserController {
         model.addAttribute("userShipping",userShipping);*/
 
         model.addAttribute("listOfCreditCards",true);
-        model.addAttribute("listOfShippingAddress",true);
+        model.addAttribute("listOfShippingAddresses",true);
         model.addAttribute("classActiveEdit",true);
 
         return "myProfile";
@@ -198,7 +198,7 @@ public class UserController {
         /*model.addAttribute("orderList",user.getOrderList());*/
 
         model.addAttribute("listOfCreditCards",true);
-        model.addAttribute("listOfShippingAddress",true);
+        model.addAttribute("listOfShippingAddresses",true);
         model.addAttribute("classActiveBilling",true);
 
         return "myProfile";
@@ -254,7 +254,7 @@ public class UserController {
             model.addAttribute("countryList",CountryList.getCountryList());
             model.addAttribute("userPaymentList",user.getUserPaymentList());
             model.addAttribute("userShippingList",user.getUserShippingList());
-            model.addAttribute("listOfShippingAddress",true);
+            model.addAttribute("listOfShippingAddresses",true);
             model.addAttribute("classActiveBilling",true);
             model.addAttribute("addNewCreditCard", true);
             return "myProfile";
@@ -280,7 +280,7 @@ public class UserController {
             model.addAttribute("userPaymentList",user.getUserPaymentList());
             model.addAttribute("userShippingList",user.getUserShippingList());
 
-            model.addAttribute("listOfShippingAddress",true);
+            model.addAttribute("listOfShippingAddresses",true);
             model.addAttribute("listOfCreditCards",true);
             model.addAttribute("classActiveBilling",true);
 
@@ -302,7 +302,7 @@ public class UserController {
         model.addAttribute("userPaymentList",user.getUserPaymentList());
         model.addAttribute("userShippingList",user.getUserShippingList());
 
-        model.addAttribute("listOfShippingAddress",true);
+        model.addAttribute("listOfShippingAddresses",true);
         model.addAttribute("listOfCreditCards",true);
         model.addAttribute("classActiveBilling",true);
 
@@ -310,29 +310,7 @@ public class UserController {
 
     }
 
-    @RequestMapping("/addNewShippingAddress")
-    public String addNewShippingAddress(
-            Model model, Principal principal
-    ){
-        User user = userService.findByUsername(principal.getName());
-        model.addAttribute("user", user);
 
-        model.addAttribute("addNewShippingAddress", true);
-        model.addAttribute("classActiveShipping", true);
-        model.addAttribute("listOfCreditCards", true);
-
-        UserShipping userShipping = new UserShipping();
-        //for getting the model
-        model.addAttribute("userShipping", userShipping);
-
-
-        model.addAttribute("countryList", CountryList.getCountryList());
-        model.addAttribute("userPaymentList", user.getUserPaymentList());
-        model.addAttribute("userShippingList", user.getUserShippingList());
-		/*model.addAttribute("orderList", user.orderList());*/
-
-        return "myProfile";
-    }
 
     @RequestMapping(value = "/addNewCreditCard" ,method = RequestMethod.POST)
     public String addNewCreditCard(
